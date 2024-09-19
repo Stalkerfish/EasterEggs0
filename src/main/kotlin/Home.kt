@@ -3,6 +3,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
@@ -50,51 +51,6 @@ fun midButton() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun ImageWithDialog(path: String) {
-    var showDialog by remember { mutableStateOf(false) }
-    var selectedItem by remember { mutableStateOf<String?>(null) }
-
-    val imagePainter: Painter = painterResource(path) // Replace with your image resource path
-    val itemList = listOf("Orb 1", "Orb 2", "Orb 3") // Replace with your actual items
-
-    // Show image and handle click
-    Image(
-        painter = imagePainter,
-        contentDescription = null,
-        modifier = Modifier
-            .clickable { showDialog = true }
-            .padding(25.dp, 25.dp, 75.dp, 0.dp)
-    )
-
-    // Show dialog
-    if (showDialog) {
-        Dialog(onDismissRequest = { showDialog = false }) {
-            Surface(modifier = Modifier.padding(16.dp)) {
-                Column {
-                    Text(text = "Select an Orb", fontSize = 20.sp, modifier = Modifier.padding(8.dp))
-                    itemList.forEach { item ->
-                        ListItem(
-                            text = { Text(text = item) },
-                            modifier = Modifier.clickable {
-                                selectedItem = item
-                                showDialog = false // Close the dialog
-                                // Handle item selection
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-    // Display selected item or do something with it
-    if (selectedItem != null) {
-        Text(text = "Selected Item: $selectedItem", modifier = Modifier.padding(16.dp))
-    }
-}
-
 @Composable
 @Preview
 fun home () {
@@ -125,8 +81,9 @@ fun home () {
 
             Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 Column() {
-                    ImageWithDialog(
-                        path = "drawable/wardrobe.svg"
+                    WardrobeShelf(
+                        path = "drawable/wardrobe.svg",
+                        itemList = listOf("Orb 1", "Orb 2", "Orb 3") // Replace with your actual items
                     )
 
                     Text(
