@@ -7,7 +7,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = "EasterEggs_0",
-        state = WindowState(width = 384.dp, height = 854.dp),
+        state = WindowState(width = 415.dp, height = 920.dp),
         undecorated = false,
     ) {
         home()
