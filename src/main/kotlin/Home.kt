@@ -25,34 +25,6 @@ import androidx.compose.ui.window.Dialog
 
 @Composable
 @Preview
-fun midButton() {
-    // Load the vector drawable from resources
-    val backgroundPainter: Painter = painterResource(resourcePath = "drawable/rectangle.svg")
-
-    Box(
-        contentAlignment = Alignment.Center, modifier = Modifier.padding(22.dp)
-    ) {
-        // Add the background image
-        Image(
-            painter = backgroundPainter,
-            contentDescription = "Button Background",
-            contentScale = ContentScale.FillBounds, // Fill the entire box
-            modifier = Modifier
-                .padding(8.dp) // Adjust this based on your layout needs
-        )
-
-        // Add the Button on top of the background image
-        Text(
-            text = no_ideas_for_this_button_yet,
-            fontFamily = MyCustomFontFamily,
-            fontSize = 16.sp,
-            color = Platinum
-        )
-    }
-}
-
-@Composable
-@Preview
 fun home () {
     MaterialTheme {
         Column(
@@ -120,5 +92,34 @@ fun home () {
                     modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp))
             }
         }
+    }
+}
+
+
+@Composable
+@Preview
+fun midButton() {
+    // Load the vector drawable from resources
+    val backgroundPainter: Painter = painterResource(resourcePath = "drawable/rectangle.svg")
+
+    Box(
+        contentAlignment = Alignment.Center, modifier = Modifier.padding(22.dp)
+    ) {
+        // Add the background image
+        Image(
+            painter = backgroundPainter,
+            contentDescription = "Button Background",
+            contentScale = ContentScale.FillBounds, // Fill the entire box
+            modifier = Modifier
+                .padding(8.dp) // Adjust this based on your layout needs
+        )
+
+        // Add the Button on top of the background image
+        Text(
+            text = no_ideas_for_this_button_yet,
+            fontFamily = MyCustomFontFamily,
+            fontSize = 16.sp,
+            color = Platinum
+        )
     }
 }

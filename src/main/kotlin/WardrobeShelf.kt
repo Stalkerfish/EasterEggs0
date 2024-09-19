@@ -1,8 +1,10 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ListItem
@@ -13,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -40,29 +43,50 @@ fun WardrobeShelf(path: String, itemList: List<String>) {
     // Show dialog
     if (showDialog) {
         Dialog(onDismissRequest = { showDialog = false }) {
-            Surface(modifier = Modifier.wrapContentHeight(),
+            Surface(
+                modifier = Modifier.size(500.dp),
                 shape = RoundedCornerShape(30.dp),
                 color = MarianBlue
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
-                    Text(text = "Select an Orb", fontSize = 20.sp, fontFamily = MyCustomFontFamily, color = Timberwolf, modifier = Modifier.padding(8.dp))
-                    itemList.forEach { item ->
-                        ListItem(
-                            text = { Text(text = item) },
-                            modifier = Modifier.clickable {
-                                selectedItem = item
-                                showDialog = false // Close the dialog
-                                // Handle item selection
-                            }
+                if (itemList.isNotEmpty()) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text(
+                            text = "Select an Orb",
+                            fontSize = 20.sp,
+                            fontFamily = MyCustomFontFamily,
+                            color = Timberwolf,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                        itemList.forEach { item ->
+                            ListItem(
+                                text = { Text(text = item) },
+                                modifier = Modifier.clickable {
+                                    selectedItem = item
+                                    showDialog = false // Close the dialog
+                                    TODO("Handle item selection")
+                                }
+                            )
+                        }
+                    }
+                } else {
+                    Column(modifier = Modifier.fillMaxHeight(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center) {
+                        Text(
+                            text = there_is_no_orbs_here,
+                            fontSize = 20.sp,
+                            fontFamily = MyCustomFontFamily,
+                            color = Timberwolf,
+                            modifier = Modifier.padding(8.dp)
                         )
                     }
                 }
             }
         }
-    }
 
-    // Display selected item or do something with it
-    if (selectedItem != null) {
-        Text(text = "Selected Item: $selectedItem", modifier = Modifier.padding(16.dp))
+        // Display selected item or do something with it
+        if (selectedItem != null) {
+            Text(text = "Selected Item: $selectedItem", modifier = Modifier.padding(16.dp))
+        }
     }
 }
