@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -39,14 +40,33 @@ fun home () {
             }
 
             Row(modifier = Modifier.align(Alignment.Start)) {
-                Image(painterResource(resourcePath = "drawable/wardrobe.svg"), null,
-                    modifier = Modifier.padding(25.dp, 25.dp, 75.dp, 0.dp))
+                Column() {
+                    Image(
+                        painterResource(resourcePath = "drawable/wardrobe.svg"), null,
+                        modifier = Modifier.padding(25.dp, 25.dp, 75.dp, 0.dp)
+                    )
 
-                Image(painterResource(resourcePath = "drawable/bag.svg"), null,
-                    modifier = Modifier.padding(0.dp, 25.dp, 25.dp, 0.dp))
+                    Text(
+                        text = wardrobe,
+                        fontSize = 18.sp,
+                        fontFamily = MyCustomFontFamily,
+                        color = Timberwolf,
+                        modifier = Modifier.padding(48.dp, 8.dp, 0.dp, 0.dp)
+                    )
+                }
+
+                Column(){
+                    Image(painterResource(resourcePath = "drawable/bag.svg"), null,
+                        modifier = Modifier.padding(0.dp, 36.dp, 25.dp, 0.dp))
+                    
+                    Text(
+                        text = bag,
+                        fontSize = 18.sp,
+                        fontFamily = MyCustomFontFamily,
+                        color = Timberwolf,
+                        modifier = Modifier.padding(42.dp, 0.dp, 0.dp, 0.dp))
+                    }
+                }
             }
-
-
         }
     }
-}
