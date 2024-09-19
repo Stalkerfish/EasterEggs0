@@ -2,17 +2,48 @@ import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@Composable
+@Preview
+fun midButton() {
+    // Load the vector drawable from resources
+    val backgroundPainter: Painter = painterResource(resourcePath = "drawable/rectangle.svg")
 
+    Box(
+        contentAlignment = Alignment.Center, modifier = Modifier.padding(30.dp)
+    ) {
+        // Add the background image
+        Image(
+            painter = backgroundPainter,
+            contentDescription = "Button Background",
+            contentScale = ContentScale.FillBounds, // Fill the entire box
+            modifier = Modifier
+                .padding(8.dp) // Adjust this based on your layout needs
+        )
+
+        // Add the Button on top of the background image
+        Text(
+            text = no_ideas_for_this_button_yet,
+            fontFamily = MyCustomFontFamily,
+            fontSize = 16.sp,
+            color = Platinum
+        )
+    }
+}
 
 @Composable
 @Preview
@@ -28,18 +59,21 @@ fun home () {
 
             Spacer(modifier = Modifier.height(15.dp))
 
-            Row(modifier = Modifier.align(Alignment.Start) .padding(10.dp)) {
+            Row(modifier = Modifier.align(Alignment.Start).padding(10.dp)) {
                 Text(
                     text = home_room,
                     fontSize = 36.sp,
                     fontFamily = MyCustomFontFamily,
-                    color = Timberwolf)
+                    color = Timberwolf
+                )
 
-                Image(painterResource(resourcePath = "drawable/just_a_line.svg"), null,
-                    modifier = Modifier.align(Alignment.CenterVertically) .padding(14.dp))
+                Image(
+                    painterResource(resourcePath = "drawable/just_a_line.svg"), null,
+                    modifier = Modifier.align(Alignment.CenterVertically).padding(14.dp)
+                )
             }
 
-            Row(modifier = Modifier.align(Alignment.Start)) {
+            Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                 Column() {
                     Image(
                         painterResource(resourcePath = "drawable/wardrobe.svg"), null,
@@ -55,18 +89,22 @@ fun home () {
                     )
                 }
 
-                Column(){
-                    Image(painterResource(resourcePath = "drawable/bag.svg"), null,
-                        modifier = Modifier.padding(0.dp, 36.dp, 25.dp, 0.dp))
-                    
+                Column() {
+                    Image(
+                        painterResource(resourcePath = "drawable/bag.svg"), null,
+                        modifier = Modifier.padding(0.dp, 36.dp, 25.dp, 0.dp)
+                    )
+
                     Text(
                         text = bag,
                         fontSize = 18.sp,
                         fontFamily = MyCustomFontFamily,
                         color = Timberwolf,
-                        modifier = Modifier.padding(42.dp, 0.dp, 0.dp, 0.dp))
-                    }
+                        modifier = Modifier.padding(42.dp, 0.dp, 0.dp, 0.dp)
+                    )
                 }
             }
+            midButton()
         }
     }
+}
