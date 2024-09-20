@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 
 @Composable
 @Preview
-fun app() {
+fun app(onNavigate: (Room) -> Unit) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth()
