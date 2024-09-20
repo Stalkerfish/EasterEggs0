@@ -30,3 +30,7 @@ fun NavigationHost(currentScreen: Room, onNavigate: (Room) -> Unit) {
         Room.App -> app(onNavigate = onNavigate)
     }
 }
+
+enum class Room {
+    App, HOME
+}

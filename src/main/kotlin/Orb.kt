@@ -12,7 +12,3 @@ data class Orb(
         useOrb(orb = this, onNavigate)
     }
 }
-
-enum class Room {
-    App, HOME
-}
