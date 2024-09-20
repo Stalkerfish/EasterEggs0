@@ -53,7 +53,7 @@ fun WardrobeShelf(path: String, itemList: MutableList<Item>) {
                         Text(
                             text = "Select an Orb",
                             fontSize = 20.sp,
-                            fontFamily = MyCustomFontFamily,
+                            fontFamily = GoogleSansBold,
                             color = Timberwolf,
                             modifier = Modifier.padding(8.dp)
                         )
@@ -77,7 +77,7 @@ fun WardrobeShelf(path: String, itemList: MutableList<Item>) {
                         Text(
                             text = there_is_no_orbs_here,
                             fontSize = 20.sp,
-                            fontFamily = MyCustomFontFamily,
+                            fontFamily = GoogleSansBold,
                             color = Timberwolf,
                             modifier = Modifier.padding(8.dp)
                         )

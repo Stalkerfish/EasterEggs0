@@ -35,7 +35,7 @@ fun home (onNavigate: (Room) -> Unit) {
                 Text(
                     text = home_room,
                     fontSize = 36.sp,
-                    fontFamily = MyCustomFontFamily,
+                    fontFamily = GoogleSansBold,
                     color = Timberwolf
                 )
 
@@ -55,7 +55,7 @@ fun home (onNavigate: (Room) -> Unit) {
                     Text(
                         text = wardrobe,
                         fontSize = 18.sp,
-                        fontFamily = MyCustomFontFamily,
+                        fontFamily = GoogleSansBold,
                         color = Timberwolf,
                         modifier = Modifier.padding(48.dp, 8.dp, 0.dp, 0.dp)
                     )
@@ -70,7 +70,7 @@ fun home (onNavigate: (Room) -> Unit) {
                     Text(
                         text = bag,
                         fontSize = 18.sp,
-                        fontFamily = MyCustomFontFamily,
+                        fontFamily = GoogleSansBold,
                         color = Timberwolf,
                         modifier = Modifier.padding(42.dp, 0.dp, 0.dp, 0.dp)
                     )
@@ -102,7 +102,7 @@ fun home (onNavigate: (Room) -> Unit) {
                     // Add the Button on top of the background image
                     Text(
                         text = no_ideas_for_this_button_yet,
-                        fontFamily = MyCustomFontFamily,
+                        fontFamily = GoogleSansBold,
                         fontSize = 16.sp,
                         color = Platinum
                     )

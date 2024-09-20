@@ -3,6 +3,10 @@ import androidx.compose.ui.text.platform.Font
 
 
 // Load custom fonts
-val MyCustomFontFamily = FontFamily(
+val GoogleSansBold = FontFamily(
     Font(resource = "font/googlesansbold.ttf")
+)
+
+val DevilSpeakes = FontFamily(
+    Font(resource = "font/devilspeaks.ttf")
 )
