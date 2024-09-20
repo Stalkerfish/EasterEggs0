@@ -25,7 +25,7 @@ import androidx.compose.ui.window.Dialog
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun WardrobeShelf(path: String, itemList: List<Item>) {
+fun WardrobeShelf(path: String, itemList: MutableList<Item>) {
     var showDialog by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf<String?>(null) }
 
@@ -63,6 +63,7 @@ fun WardrobeShelf(path: String, itemList: List<Item>) {
                                 modifier = Modifier.clickable {
                                     selectedItem = item.toString()
                                     item.useItem()
+                                    itemList.remove(item)
                                     showDialog = false // Close the dialog
 
                                 }
@@ -83,11 +84,6 @@ fun WardrobeShelf(path: String, itemList: List<Item>) {
                     }
                 }
             }
-        }
-
-        // Display selected item or do something with it
-        if (selectedItem != null) {
-            Text(text = "Selected Item: $selectedItem", modifier = Modifier.padding(16.dp))
         }
     }
 }
