@@ -3,17 +3,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -21,17 +13,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 
 @Composable
 @Preview
-fun home () {
+fun home (onNavigate: (Room) -> Unit) {
+
     MaterialTheme {
         Column(
             modifier = Modifier
                 .background(color = RoseRed)
                 .fillMaxWidth()
-                .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
+                .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            val items = mutableListOf<Item>()
 
             Image(painterResource(resourcePath = "drawable/frame.png"), null)
 
@@ -55,7 +49,7 @@ fun home () {
                 Column() {
                     WardrobeShelf(
                         path = "drawable/wardrobe.svg",
-                        itemList = listOf("Orb 1", "Orb 2", "Orb 3") // Replace with your actual items
+                        itemList = items
                     )
 
                     Text(
@@ -82,44 +76,52 @@ fun home () {
                     )
                 }
             }
+
+            @Composable
+            @Preview
+            fun midButton() {
+                // Load the vector drawable from resources
+                val backgroundPainter: Painter = painterResource(resourcePath = "drawable/rectangle.svg")
+
+                Box(
+                    contentAlignment = Alignment.Center, modifier = Modifier.padding(22.dp)
+                ) {
+                    // Add the background image
+                    Image(
+                        painter = backgroundPainter,
+                        contentDescription = "Button Background",
+                        contentScale = ContentScale.FillBounds, // Fill the entire box
+                        modifier = Modifier
+                            .padding(8.dp) // Adjust this based on your layout needs
+                            .clickable {
+                                val orb = Orb(Room.App, Room.App.name, onNavigate)
+                                items.add(orb)
+                            }
+                    )
+
+                    // Add the Button on top of the background image
+                    Text(
+                        text = no_ideas_for_this_button_yet,
+                        fontFamily = MyCustomFontFamily,
+                        fontSize = 16.sp,
+                        color = Platinum
+                    )
+                }
+            }
+
             midButton()
 
-            Row(modifier = Modifier.padding(15.dp, 0.dp, 0.dp, 0.dp) .align(Alignment.Start)) {
+            Row(modifier = Modifier.padding(15.dp, 0.dp, 0.dp, 0.dp).align(Alignment.Start)) {
                 Image(painterResource(resourcePath = "drawable/book.svg"), null)
-                Image(painterResource(resourcePath = "drawable/phone.svg"), null,
-                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp))
-                Image(painterResource(resourcePath = "drawable/settings.svg"), null,
-                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp))
+                Image(
+                    painterResource(resourcePath = "drawable/phone.svg"), null,
+                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp)
+                )
+                Image(
+                    painterResource(resourcePath = "drawable/settings.svg"), null,
+                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp)
+                )
             }
         }
-    }
-}
-
-
-@Composable
-@Preview
-fun midButton() {
-    // Load the vector drawable from resources
-    val backgroundPainter: Painter = painterResource(resourcePath = "drawable/rectangle.svg")
-
-    Box(
-        contentAlignment = Alignment.Center, modifier = Modifier.padding(22.dp)
-    ) {
-        // Add the background image
-        Image(
-            painter = backgroundPainter,
-            contentDescription = "Button Background",
-            contentScale = ContentScale.FillBounds, // Fill the entire box
-            modifier = Modifier
-                .padding(8.dp) // Adjust this based on your layout needs
-        )
-
-        // Add the Button on top of the background image
-        Text(
-            text = no_ideas_for_this_button_yet,
-            fontFamily = MyCustomFontFamily,
-            fontSize = 16.sp,
-            color = Platinum
-        )
     }
 }
