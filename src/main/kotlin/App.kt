@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-@Preview
 fun app(onNavigate: (Room) -> Unit) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
@@ -44,4 +43,12 @@ fun app(onNavigate: (Room) -> Unit) {
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewApp() {
+    // Provide a mock function for onNavigate
+    app(onNavigate = {
+    })
 }

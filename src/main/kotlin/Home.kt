@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-@Preview
 fun home (onNavigate: (Room) -> Unit) {
 
     MaterialTheme {
@@ -124,4 +123,12 @@ fun home (onNavigate: (Room) -> Unit) {
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewHome() {
+    // Provide a mock function for onNavigate
+    home(onNavigate = {
+    })
 }
