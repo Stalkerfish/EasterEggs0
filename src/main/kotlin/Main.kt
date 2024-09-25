@@ -28,9 +28,11 @@ fun NavigationHost(currentScreen: Room, onNavigate: (Room) -> Unit) {
     when (currentScreen) {
         Room.HOME -> home(onNavigate = onNavigate)
         Room.App -> app(onNavigate = onNavigate)
+        Room.EARTH -> Earth(onNavigate = onNavigate)
+        Room.Settings -> TODO()
     }
 }
 
 enum class Room {
-    App, HOME
+    App, HOME, EARTH, Settings
 }
