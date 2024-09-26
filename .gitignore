@@ -40,3 +40,10 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+src/main/resources/values/colors.xml
+
+src/main/resources/values/strings.xml
+
+src/main/resources/values/themes.xml
+
+.idea/
